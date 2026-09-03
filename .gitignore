@@ -1,0 +1,49 @@
+# dependencies
+/node_modules
+/challenge-web/node_modules/
+/.pnp
+.pnp.*
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/versions
+
+# testing
+/coverage
+/.challenge-test-dist/
+/challenge-web/.test-dist/
+/challenge-web/.screenshots/
+/.test-browser/
+/.test-logs/
+
+# next.js
+/.next/
+/challenge-web/.next/
+/out/
+/challenge-web/out/
+
+# production
+/build
+
+# misc
+.DS_Store
+Thumbs.db
+*.pem
+
+# debug
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+
+# environment variables
+.env*
+!.env.example
+
+# vercel
+.vercel
+
+# typescript
+*.tsbuildinfo
+next-env.d.ts

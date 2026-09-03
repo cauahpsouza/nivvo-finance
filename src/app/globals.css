@@ -1,0 +1,313 @@
+@import "tailwindcss";
+
+@theme {
+  --color-brand-900: #0B1F1A;
+  --color-brand-800: #123A30;
+  --color-brand-600: #159A73;
+  --color-brand-500: #20B486;
+  --color-brand-100: #DDF8EF;
+  
+  --color-accent-500: #A3E635;
+  
+  --color-background: #F5F7F6;
+  --color-surface: #FFFFFF;
+  
+  --color-text-primary: #17211E;
+  --color-text-secondary: #66736E;
+  
+  --color-border: #E4EAE7;
+  
+  --color-danger: #E5484D;
+  --color-warning: #E9A23B;
+  --color-info: #407BFF;
+
+  --color-cat-food: #F59E0B;
+  --color-cat-delivery: #F97316;
+  --color-cat-transport: #3B82F6;
+  --color-cat-market: #8B5CF6;
+  --color-cat-health: #14B8A6;
+  --color-cat-leisure: #EC4899;
+  --color-cat-bills: #64748B;
+  --color-cat-others: #94A3B8;
+
+  --font-sans: var(--font-manrope);
+  --font-mono: var(--font-ibm-mono);
+}
+
+:root {
+  background-color: var(--color-background);
+  color: var(--color-text-primary);
+  --motion-instant: 120ms;
+  --motion-fast: 180ms;
+  --motion-normal: 320ms;
+  --motion-smooth: 480ms;
+  --motion-slow: 680ms;
+  --motion-reveal: 900ms;
+  --motion-hover: 180ms;
+  --motion-press: 120ms;
+  --motion-page: 360ms;
+  --motion-panel: 320ms;
+  --motion-scene: 560ms;
+  --motion-final: 900ms;
+  --motion-result: 680ms;
+  --motion-ease-out: cubic-bezier(.22, 1, .36, 1);
+}
+
+body {
+  font-family: var(--font-sans), Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+@layer utilities {
+  .shadow-soft {
+    box-shadow: 0 8px 30px rgba(16, 40, 32, 0.06);
+  }
+
+  .nivvo-panel {
+    position: relative;
+    clip-path: polygon(0 0, calc(100% - 26px) 0, 100% 26px, 100% 100%, 0 100%);
+    border-radius: 0;
+  }
+
+  .nivvo-kicker {
+    font-family: var(--font-ibm-mono), monospace;
+    font-size: 0.6875rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    line-height: 1;
+    text-transform: uppercase;
+  }
+
+  .toast-enter {
+    animation: toast-enter var(--motion-normal) var(--motion-ease-out) both;
+  }
+
+  .level-up-enter {
+    animation: level-up-enter var(--motion-slow) var(--motion-ease-out) both;
+  }
+
+  .expense-row-enter {
+    animation: row-enter var(--motion-normal) var(--motion-ease-out) both;
+  }
+
+  .expense-row-exit {
+    animation: row-exit var(--motion-fast) ease-in both;
+  }
+
+  .expense-row-edit {
+    animation: row-edit var(--motion-slow) var(--motion-ease-out) both;
+  }
+
+  .page-enter {
+    animation: page-enter var(--motion-page) var(--motion-ease-out) both;
+  }
+
+  .dropdown-enter {
+    animation: dropdown-enter var(--motion-fast) var(--motion-ease-out) both;
+  }
+
+  .modal-backdrop-enter {
+    animation: modal-backdrop-in var(--motion-fast) ease-out both;
+  }
+
+  .modal-panel-enter {
+    animation: modal-panel-in var(--motion-panel) var(--motion-ease-out) both;
+  }
+
+  .modal-backdrop-exit {
+    animation: modal-backdrop-out var(--motion-fast) ease-in both;
+  }
+
+  .modal-panel-exit {
+    animation: modal-panel-out var(--motion-normal) ease-in both;
+  }
+
+  .goal-progress-react {
+    animation: goal-progress-react var(--motion-reveal) var(--motion-ease-out) both;
+  }
+
+  .journey-route-enter {
+    animation: journey-route-enter var(--motion-reveal) var(--motion-ease-out) both;
+  }
+
+  .journey-current-enter {
+    animation: journey-current-enter var(--motion-smooth) var(--motion-ease-out) both;
+  }
+
+  .achievement-grid-enter {
+    animation: achievement-grid-enter var(--motion-normal) var(--motion-ease-out) both;
+  }
+
+  .nivvo-segments > div {
+    background-image: repeating-linear-gradient(90deg, transparent 0, transparent calc(20% - 2px), rgba(11, 31, 26, .42) calc(20% - 2px), rgba(11, 31, 26, .42) 20%);
+  }
+
+  .challenge-grid::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: .16;
+    background-image:
+      linear-gradient(rgba(163, 230, 53, .12) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(163, 230, 53, .12) 1px, transparent 1px);
+    background-size: 48px 48px;
+    mask-image: linear-gradient(90deg, #000, transparent 72%);
+  }
+
+  .fair-landing {
+    position: relative;
+  }
+
+  .fair-copy {
+    animation: challenge-slide-in 560ms var(--motion-ease-out) both;
+  }
+
+  .fair-qr-panel {
+    animation: challenge-reveal 620ms 140ms var(--motion-ease-out) both;
+  }
+
+  .fair-qr-static,
+  .fair-qr-static svg {
+    display: block;
+    width: min(320px, 72vw);
+    height: auto;
+  }
+}
+
+@keyframes toast-enter {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes level-up-enter {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+    filter: brightness(.8);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+    filter: brightness(1);
+  }
+}
+
+@keyframes row-enter {
+  from { opacity: 0; transform: translateY(-5px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes row-exit {
+  from { opacity: 1; transform: translateX(0); max-height: 90px; }
+  to { opacity: 0; transform: translateX(10px); max-height: 0; padding-block: 0; }
+}
+
+@keyframes row-edit {
+  0% { background-color: color-mix(in srgb, var(--color-accent-500) 20%, white); }
+  100% { background-color: transparent; }
+}
+
+@keyframes page-enter {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes dropdown-enter {
+  from { opacity: 0; transform: translateY(-5px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes modal-backdrop-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes modal-backdrop-out {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}
+
+@keyframes modal-panel-in {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes modal-panel-out {
+  from { opacity: 1; transform: translateY(0); }
+  to { opacity: 0; transform: translateY(8px); }
+}
+
+@keyframes goal-progress-react {
+  from { filter: brightness(.86); }
+  45% { filter: brightness(1.08); }
+  to { filter: brightness(1); }
+}
+
+@keyframes journey-route-enter {
+  from { transform: scaleY(0); }
+  to { transform: scaleY(1); }
+}
+
+@keyframes journey-current-enter {
+  from { opacity: .5; transform: translateX(-8px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes achievement-grid-enter {
+  from { opacity: 0; transform: translateY(5px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes challenge-slide-in {
+  from { opacity: 0; transform: translateX(16px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes challenge-reveal {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+button:not(:disabled) {
+  -webkit-tap-highlight-color: transparent;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+  }
+
+  .toast-enter,
+  .level-up-enter,
+  .expense-row-enter,
+  .expense-row-exit,
+  .expense-row-edit,
+  .page-enter,
+  .dropdown-enter,
+  .modal-backdrop-enter,
+  .modal-panel-enter,
+  .modal-backdrop-exit,
+  .modal-panel-exit,
+  .goal-progress-react,
+  .journey-route-enter,
+  .journey-current-enter,
+  .achievement-grid-enter {
+    animation: none;
+  }
+
+  .fair-copy,
+  .fair-qr-panel {
+    animation: none;
+  }
+}
