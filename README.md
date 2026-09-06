@@ -1,38 +1,130 @@
-# Nivvo
+# 💰 Nivvo
 
-Aplicação local de educação financeira com visão geral, gastos, metas, jornada e conquistas.
+### Plataforma web de educação financeira gamificada
 
-## Desenvolvimento
+---
+
+## Sobre o projeto
+
+O **Nivvo** é uma aplicação de educação financeira criada para tornar o controle das finanças pessoais mais simples, visual e interativo.
+
+A plataforma reúne acompanhamento de gastos, metas financeiras, jornada de evolução e conquistas, utilizando elementos de gamificação para incentivar melhores decisões financeiras.
+
+O projeto foi desenvolvido e apresentado na **FEC 2026 da UNIARA**.
+
+---
+
+## Funcionalidades
+
+| Funcionalidade | Descrição |
+|---|---|
+| Visão geral | Resumo das principais informações financeiras |
+| Gastos | Acompanhamento e organização de despesas |
+| Metas | Criação e acompanhamento de objetivos financeiros |
+| Jornada | Evolução do usuário dentro da plataforma |
+| Conquistas | Sistema de progresso e recompensas |
+| Desafio | Experiência interativa com decisões financeiras |
+| Perfil | Visualização das informações e evolução do usuário |
+
+---
+
+## Desafio Nivvo
+
+O projeto também possui uma experiência independente chamada **Desafio Nivvo**.
+
+Por meio de um QR Code, o usuário acessa uma aplicação online onde precisa tomar decisões financeiras em diferentes situações.
+
+O objetivo é mostrar, de maneira interativa, como pequenas escolhas podem impactar o planejamento financeiro.
+
+---
+
+## Estrutura
+
+O projeto é dividido em duas aplicações:
+
+```text
+nivvo-finance/
+│
+├── Aplicação principal
+│   ├── Visão geral
+│   ├── Gastos
+│   ├── Metas
+│   ├── Jornada
+│   ├── Conquistas
+│   └── Perfil
+│
+└── challenge-web/
+    └── Desafio financeiro online
+```
+
+A aplicação principal funciona localmente, enquanto o **Challenge Web** possui build próprio e pode ser publicado separadamente.
+
+A comunicação entre os dois ocorre apenas através do QR Code.
+
+---
+
+## Como executar
+
+Clone o repositório e instale as dependências:
 
 ```bash
+npm install
+```
+
+Inicie o ambiente de desenvolvimento:
+
+```bash
+npm run dev
+```
+
+Acesse:
+
+```text
+http://localhost:3000
+```
+
+---
+
+## Challenge Web
+
+O desafio está localizado em:
+
+```text
+challenge-web
+```
+
+Para executá-lo separadamente:
+
+```bash
+cd challenge-web
 npm install
 npm run dev
 ```
 
-Abra `http://localhost:3000`.
-
-## Arquitetura da feira
-
-- **Nivvo principal:** roda localmente neste diretório. A rota `/desafio` é uma landing com QR Code.
-- **Desafio online:** vive em `challenge-web`, possui build próprio e é publicado separadamente na Vercel.
-- **Única ponte:** o QR contém a URL pública definida em `NEXT_PUBLIC_CHALLENGE_URL`. Não existe sincronização, API ou banco entre os aplicativos.
-
-Depois de publicar o Challenge, crie `.env.local` na raiz:
+Após publicar o Challenge, crie um arquivo `.env.local` na raiz do projeto:
 
 ```env
 NEXT_PUBLIC_CHALLENGE_URL=
 ```
 
-Cole a URL real fornecida pela Vercel depois do sinal `=`.
+Adicione a URL pública do Challenge após o sinal `=`.
 
-Reinicie `npm run dev` e abra `/desafio`. Veja [CHALLENGE_DEPLOY.md](./CHALLENGE_DEPLOY.md) para o roteiro completo.
+---
 
 ## Comandos
 
 ```bash
+npm run dev
 npm run lint
 npm run build
-npm run challenge:dev
-npm run challenge:test
-npm run challenge:build
 ```
+
+---
+
+## Contexto acadêmico
+
+Projeto desenvolvido para a **FEC 2026 da UNIARA**, unindo desenvolvimento web, educação financeira e gamificação em uma experiência interativa.
+
+---
+
+### Desenvolvido por Cauã Souza
